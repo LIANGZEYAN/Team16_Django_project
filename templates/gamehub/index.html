@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gamehub</title>
+</head>
+<body>
+    <h1>Gamehub says</h1>
+
+    <div>
+        Hey there Gamers! <br />
+        <strong>{{ boldmessage }}</strong><br />
+    </div>
+
+    <div>
+        {% if games %}
+            <ul>
+            {% for game in games %}
+                <a href="/gamehub/comment/{{ game.slug }}/">{{ game.name }}</a>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <strong>There are no games present.</strong>
+        {% endif %}
+
+    </div>
+
+    <div>
+        <a href="/gamehub/about/">About</a><br />
+        <img src="/static/images/elder_ring.jpg" alt="Picture of Game" /><br/> <!-- New line -->
+        <img src="{{ MEDIA_URL }}elder_ring_character.jpg" alt="New character release" />
+    </div>
+</body>
+</html>
