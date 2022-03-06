@@ -1,5 +1,5 @@
 """
-WSGI config for gamhub project.
+WSGI config for Team16_Django_project project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'gamhub.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Team16_Django_project.settings')
 
 application = get_wsgi_application()

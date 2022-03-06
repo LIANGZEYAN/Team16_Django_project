@@ -1,4 +1,4 @@
-"""gamhub URL Configuration
+"""Team16_Django_project URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.1/topics/http/urls/
@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import include
+from gamehub import views
 
 urlpatterns = [
+    path('', views.index, name='index'),
+    path('gamehub/', include('gamehub.urls')),
     path('admin/', admin.site.urls),
 ]
