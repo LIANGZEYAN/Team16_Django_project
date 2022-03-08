@@ -1,0 +1,294 @@
+<!--
+ * @Author: your name
+ * @Date: 2022-03-07 11:32:31
+ * @LastEditTime: 2022-03-07 16:12:20
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: \game-page\index.html
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/js/jquery.searchableSelect.css" rel="stylesheet" type="text/css">
+    <title>Game</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            background: url('/static/images/bg.jpg');
+            background-size: cover;
+        }
+        .head {
+            margin: 0 auto;
+            padding: 0 20px;
+            color: #fff;
+            background: #2A2E32;
+        }
+        .head-main {
+            margin: 0 auto;
+            width: 1000px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .main {
+            margin: 0 auto;
+            width: 1000px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .logo {
+            display: flex;
+            font-size: 24px;
+            align-items: center;
+            font-weight: 700;
+        }
+        .icon {
+            margin-right: 10px;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background: #fff;
+            overflow: hidden;
+        }
+        .icon > img {
+            width: 20px;
+            height: 20px;
+            background: url('/static/images/game-icon.png');
+            background-size: cover;
+        }
+        .btn-list {
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        .main-left {
+            width: 750px;
+            padding: 0 10px;
+        }
+        .main-right {
+            width: 250px;
+            padding: 10px;
+        }
+        .btn-item {
+            width: 120px;
+            height: 35px;
+            font-size: 16px;
+            line-height: 35px;
+            text-align: center;
+            cursor: pointer;
+            color: #fff;
+            background: #074B34;
+            border: 0;
+            border-radius: 5px;
+            /* box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, .5); */
+        }
+        .game {
+            color: #fff;
+        }
+        .game-text {
+            line-height: 40px;
+        }
+        .game-btn {
+            margin: 10px 0;
+        }
+        .game-item {
+            padding: 10px 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .game-btn-item {
+            padding: 0 20px;
+            height: 35px;
+            font-size: 16px;
+            line-height: 35px;
+            text-align: center;
+            cursor: pointer;
+            color: #fff;
+            background: #074B34;
+            border: 0;
+            border-radius: 5px;
+            /* box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, .5); */
+        }
+        .price {
+            width: 150px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .price-num {
+            font-size: 18px;
+            line-height: 35px;
+            color: #c30d0d;
+        }
+        .rating {
+            width: 300px;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 10px;
+            background: rgba(7, 75, 52, .5);
+        }
+        .rating-item {
+            display: flex;
+            height: 40px;
+            align-items: center;
+        }
+        .rating-name {
+            width: 90px;
+            font-size: 18px;
+            color: #bd3737;
+        }
+        .rating-start {
+            display: flex;
+            padding-left: 10px;
+            margin-left: 70px;
+        }
+        .rating-start > img {
+            padding-right: 5px;
+            width: 15px;
+            height: 15px;
+            object-fit: cover;
+        }
+        .rating-md {
+            color: #fff;
+        }
+        .foot {
+            padding: 0 20px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            color: #fff;
+            font-size: 20px;
+            font-weight: 700;
+        }
+        .foot > img {
+            margin-left: 15px;
+            width: 30px;
+            height: 30px;
+            background-size: cover;
+        }
+        .price-icon {
+            width: 35px;
+            height: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000100;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .price-icon > img {
+            width: 30px;
+            height: 30px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="head">
+        <div class="head-main">
+            <div class="logo">
+                <div class="icon"><img src="/static/images/game-icon.png"></div>
+                <div>GameHub</div>
+            </div>
+            <div class="head-search">
+                <select onchange="selectYouxi(this)" id="myselect"></select>
+            </div>
+            <!-- <div></div> -->
+        </div>
+    </div>
+    <div class="main">
+        <div class="main-left">
+            <div class="btn-list">
+                <button class="btn-item">Login in</button>
+                <button class="btn-item">Sign up</button>
+                <button class="btn-item">Search</button>
+            </div>
+            <div class="game">
+                <div class="game-text">{{ context.name}}</div>
+                <div class="game-img"><img src="{{context.poster}}"></div>
+                <div class="game-btn">
+                    <div class="game-item">
+                        <button class="game-btn-item" onclick="toByBotton()">Buy it right now!</button>
+                        <button class="game-btn-item">Leave comment</button>
+                    </div>
+                    <div class="game-item">
+                        <div class="price">
+                            <span class="price-num">{{ context.price }}</span>
+                            <span class="price-icon"><img src="/static/images/icon-game.png" alt=""></span>
+                        </div>
+                        <button class="game-btn-item">back to main page</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-right">
+            <div class="rating">
+                <div class="rating-item">
+                    <div class="rating-name">Quality<span id="qualityNum" style="display: none">{{ context.avg_quality_rate }}</span></div>
+                    <div class="rating-start" id="quality">
+                        <span>{{ context.avg_quality_rate }}</span>
+                        <img src="/static/images/stars.png">
+                    </div>
+                </div>
+                <div class="rating-item">
+                    <div class="rating-name">Music<span id="musicNum" style="display: none">{{context.avg_music_rate}}</span></div>
+                    <div class="rating-start" id="music">
+                         <span>{{ context.avg_music_rate }}</span>
+                        <img src="/static/images/stars.png">
+                    </div>
+                </div>
+                <div class="rating-item">
+                    <div class="rating-name" >Community <span id="communityNum" style="display: none">{{context.avg_community_rate}}</span></div>
+                    <div class="rating-start" id="communityNum" >
+                        <span>{{ context.avg_community_rate }}</span>
+                        <img src="/static/images/stars.png">
+
+                    </div>
+                </div>
+{#                <div class="rating-item">#}
+{#                    <div class="rating-name">avgRate</div>#}
+{#                    <div class="rating-start">#}
+{#                        <img src="/static/images/stars.png">#}
+{#                        <img src="/static/images/stars.png">#}
+{#                    </div>#}
+{#                </div>#}
+            </div>
+            <div class="rating">
+                <p class="rating-md">{{ context.description}}</p>
+            </div>
+
+             <div class="rating" id="pinglun">
+                  {% for i in comments %}
+                                       <p class="rating-md">{{ i.fields.content }}   {{ i.fields.date }}</p>
+                            {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="foot">
+        <div>CONTACT US</div>
+        <img src="/static/images/icon-fb.png">
+        <img src="/static/images/icon-tw.png">
+        <img src="/static/images/icon-ins.png">
+    </div>
+    <script src="/static/js/jquery-1.11.1.min.js"></script>
+    <script src="/static/js/jquery.searchableSelect.js"></script>
+      <script src="/static/js/view.js"></script>
+
+</body>
+</html>

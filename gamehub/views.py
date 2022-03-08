@@ -1,4 +1,8 @@
-from django.http import HttpResponse
+import json
+
+from django.core import serializers
+from django.forms import model_to_dict
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from gamehub.models import Game
 from gamehub.models import Comment
@@ -21,21 +25,29 @@ def about(request):
     return render(request, 'gamehub/about.html', context=context_dict)
 
 def show_comments(request, game_name_slug):
-
     context_dict = {}
-
     try:
-
         game = Game.objects.get(slug=game_name_slug)
-
         comments = Comment.objects.filter(game=game)
-
         context_dict['comments'] = comments
-
         context_dict['game'] = game
     except Game.DoesNotExist:
-
         context_dict['game'] = None
         context_dict['comments'] = None
-
     return render(request, 'gamehub/comment.html', context=context_dict)
+
+
+
+
+def view(request):
+    obj = model_to_dict(Game.objects.get(id=request.GET.get("id")))
+    comments = Comment.objects.filter(game_id=request.GET.get("id"))
+    json_data = serializers.serialize('json', comments)
+    json_data2 = json.loads(json_data)
+    return render(request, 'gamehub/detail.html',{'context':obj,'comments':json_data2})
+
+def queryByGameName(request):
+    obj = Game.objects.all()
+    json_data = serializers.serialize('json', obj)
+    json_data2 = json.loads(json_data)
+    return JsonResponse(json_data2,safe=False)

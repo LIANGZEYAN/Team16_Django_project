@@ -3,6 +3,7 @@ from django.template.defaultfilters import slugify
 
 
 class Game(models.Model):
+    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=128, unique=True)
     publisher = models.CharField(max_length=128)
     price = models.IntegerField(default=0)
@@ -24,6 +25,7 @@ class Game(models.Model):
         return self.name
 
 class Comment(models.Model):
+    id = models.IntegerField(primary_key=True)
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
     content = models.CharField(max_length=300)
     date = models.DateTimeField(auto_now=True)
