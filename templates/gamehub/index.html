@@ -1,35 +1,122 @@
 <!DOCTYPE html>
 {% load staticfiles %}
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Gamehub</title>
+    <link rel="stylesheet" type="text/css" href="/static/style/homepage.css">
+
 </head>
+
 <body>
-    <h1>Gamehub says</h1>
+    <div class="main">
+        <div class="main_top">
+            <div class="game_hub">
+                <img src="/static/images/game-icon.png">
+                <h1>Gamehub<span> , where you have fun talking about games...</span></h1>
+            </div>
 
-    <div>
-        Hey there Gamers! <br />
-        <strong>{{ boldmessage }}</strong><br />
+            <div class="customer_buttons">
+                <button type="button"><span>Login</span></button>
+                <button type="button"><span>Sign Up</span></button>
+            </div>
+        </div>
+
+        <div class="content">
+
+
+
+            <div class="content-left">
+                <h2>Most viewed games</h2>
+                <div>
+                    {% if games %}
+                    {% for game in games %}
+                    <ul>
+
+                        <a href="/gamehub/comment/{{game.slug}}">{{game.name}}</a><br>
+
+                    </ul>
+                    {% endfor %}
+
+                    {% endif %}
+                </div>
+            </div>
+
+
+            <div class="content-middle">
+
+
+
+                <div class="form-inline">
+                    <form id="user-form" method="post" action="{% url 'gamehub:index' %}">
+                        {% csrf_token %}
+
+                        <input type="text" size="50" name="query" id="query" placeholder="Search for the game..">
+
+                        <button class="buttons" type="submit" name="submit"><span>Search, or..</span></button>
+
+                        <button class="buttons" type="button">
+                            <span>Just roam in the gamehub, or..</span>
+                        </button>
+
+                        <button class="buttons" type="button">
+                            <a href=""></a><span>See games sorted by different criteria...</span>
+                        </button>
+                    </form>
+                </div>
+
+                <div>
+                    {% if search_result %}
+                    <h2>Results</h2>
+
+                    <div class="list-group">
+                        {% for result in search_result %}
+                        <div class="list-group-item">
+                            <h3 class="list-group-item-heading">
+                                <a href="{{result.link}}">{{result.title|safe|escape}}</a>
+                            </h3>
+                            <p class="list-group-item-text">
+                                {{result.summary|safe|escape}}
+                            </p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="content-right">
+                <h2>People are talking about...</h2>
+                {% if hits%}
+                {% for game in hits %}
+                <ul>
+
+                    <a href="/gamehub/comment/{{game.game__slug}}">{{game.game__name}}: {{game.num_of_comments}}
+                        comments</a>
+
+                </ul>
+                {% endfor %}
+                {% endif %}
+
+            </div>
+        </div>
     </div>
 
-    <div>
-        {% if games %}
-            <ul>
-            {% for game in games %}
-                <a href="/gamehub/comment/{{ game.slug }}/">{{ game.name }}</a>
-            {% endfor %}
-            </ul>
-        {% else %}
-            <strong>There are no games present.</strong>
-        {% endif %}
 
-    </div>
 
-    <div>
+    <!-- <div>
         <a href="/gamehub/about/">About</a><br />
-        <img src="/static/images/elder_ring.jpg" alt="Picture of Game" /><br/> <!-- New line -->
-        <img src="{{ MEDIA_URL }}elder_ring_character.jpg" alt="New character release" />
-    </div>
+        <img src="/static/images/elder_ring.jpg" alt="Picture of Game" /><br /> 
+        <img src="/media/elder_ring_character.jpg" alt="New character release" />
+    </div>-->
+
+
 </body>
+
 </html>

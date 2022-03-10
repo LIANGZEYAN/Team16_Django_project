@@ -1,0 +1,163 @@
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: visible;
+    background: url("../images/eldenRingTrailer3.gif");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: gold;
+}
+
+a{
+    color:#f5c904;
+    text-decoration: none;
+    font-size: large;
+}
+a:visited{
+    color: rgb(157, 135, 88);
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+}
+
+.main_top {
+    width: 100%;
+    height: 7%;
+    display: flex;  
+}
+.main_top span{
+    font-size: small;
+}
+.game_hub{
+    flex:6;
+}
+.game_hub img{
+    display: inline-block;
+    padding-right: 3px;
+    padding-top: 10px;
+}
+.game_hub h1{
+    display: inline-block;
+}
+
+.customer_buttons{
+    flex:1;
+}
+.customer_buttons button{
+    margin-top: 15%;
+    margin-left: 5px;
+    border-radius: 4px;
+    background-color: rgb(37, 37, 37);
+    border: none;
+    color: #f5c904;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 10px;
+    padding: 5px;
+    width: 100px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.content {
+    width: 100%;
+    height: 93%;
+    display: flex;
+}
+
+.content-left {
+    flex: 1;
+    margin-top: 2.5%;
+}
+
+.content-middle {
+    flex: 2;
+    text-align: center;
+}
+
+.content-right {
+    flex: 1;
+    margin-top: 2.5%;
+}
+
+.buttons{
+    margin: 5px;
+    display: inline-block;
+    border-radius: 4px;
+    background-color: rgb(37, 37, 37);
+    border: none;
+    color: #f5c904;
+    text-align: center;
+    font-size: 20px;
+    padding: 15px;
+    width:fit-content;
+    height: 42px;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.buttons span, .customer_buttons button span{
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    }
+    
+.buttons span:after, .customer_buttons button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.buttons:hover span, .customer_buttons button:hover span {
+    padding-right: 25px;
+}
+
+.buttons:hover span:after, .customer_buttons button:hover span:after {
+    opacity: 1;
+    right: 0;
+} 
+
+.customer_buttons{ 
+    color: #f5c904;
+    display: inline-block;
+}
+
+
+h1{
+    color: gold;
+}
+h2{
+    color:gold
+}
+p{
+    color: gold;
+}
+.content-middle_bottom{
+    height:600px;
+    margin-top: 25%;
+}
+
+
+
+
+input[type=text]{
+    width: 90%;
+    padding: 12px 20px;
+    margin-top: 200px;
+    font-family: sans-serif;
+    border-radius: 20px;
+    background-color: transparent;
+}
+input[type=text]:focus{
+    background-color: lightgray;
+}
+
