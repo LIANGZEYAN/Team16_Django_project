@@ -1,9 +1,12 @@
+from audioop import reverse
+from contextlib import redirect_stderr
 import json
 
 from django.core import serializers
 from django.forms import model_to_dict
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
+from gamehub.forms import CommentForm
 from gamehub.models import Game
 from gamehub.models import Comment
 
@@ -37,13 +40,20 @@ def show_comments(request, game_name_slug):
     return render(request, 'gamehub/comment.html', context=context_dict)
 
 def rate(request, game_name_slug):
-    context_dict = {}
-    try:
-        game = Game.objects.get(slug=game_name_slug)
-        context_dict['game'] = game
-    except Game.DoesNotExist:
-        context_dict['game'] = None
-    return render(request, 'gamehub/rate.html', context=context_dict)
+    game = Game.objects.get(slug=game_name_slug)
+    form = CommentForm()
+    Comment
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+
+        if form.is_valid():
+            form.save(commit=True)
+            return redirect_stderr(reverse('gamehub:index'))
+        else:
+            print(form.errors)
+    
+    return render(request, 'gamehub/rate.html', {'form': form})
 
 
 
