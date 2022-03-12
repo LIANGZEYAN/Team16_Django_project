@@ -36,6 +36,15 @@ def show_comments(request, game_name_slug):
         context_dict['comments'] = None
     return render(request, 'gamehub/comment.html', context=context_dict)
 
+def rate(request, game_name_slug):
+    context_dict = {}
+    try:
+        game = Game.objects.get(slug=game_name_slug)
+        context_dict['game'] = game
+    except Game.DoesNotExist:
+        context_dict['game'] = None
+    return render(request, 'gamehub/rate.html', context=context_dict)
+
 
 
 
