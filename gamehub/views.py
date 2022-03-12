@@ -1,7 +1,8 @@
-from audioop import reverse
+#from audioop import reverse
 from contextlib import redirect_stderr
 import json
 
+from django.urls import reverse
 from django.core import serializers
 from django.forms import model_to_dict
 from django.http import HttpResponse, JsonResponse
@@ -39,8 +40,8 @@ def show_comments(request, game_name_slug):
         context_dict['comments'] = None
     return render(request, 'gamehub/comment.html', context=context_dict)
 
-def rate(request, game_name_slug):
-    game = Game.objects.get(slug=game_name_slug)
+def rate(request):
+    #game = Game.objects.get(slug=game_name_slug)
     form = CommentForm()
     Comment
 

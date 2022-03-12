@@ -1,4 +1,4 @@
-from turtle import width
+
 from django import forms
 from django.contrib.auth.models import User
 from gamehub import models
@@ -8,13 +8,15 @@ from gamehub.models import Comment
 
 class CommentForm(forms.ModelForm):
 
-    id = forms.IntegerField(widget=forms.HiddenInput)
+    
     game = models.Game()
+    id = forms.IntegerField(widget=forms.NumberInput)
+    #date = forms.DateTimeField()
     content = forms.CharField(max_length=300)
-    quality_rate = forms.IntegerField(default=0)
-    music_rate = forms.IntegerField(default=0)
-    community_rate = forms.IntegerField(default=0)
+    quality_rate = forms.IntegerField(widget=forms.NumberInput,max_value=5, initial=0)
+    music_rate = forms.IntegerField(widget=forms.NumberInput,max_value=5, initial=0)
+    community_rate = forms.IntegerField(widget=forms.NumberInput,max_value=5, initial=0)
 
     class Meta:
         model = Comment
-        fields = ('name',)
+        fields = ('game','id','content','quality_rate','music_rate','community_rate',)
