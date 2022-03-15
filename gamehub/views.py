@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.core import serializers
 from django.forms import model_to_dict
 from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from gamehub.forms import CommentForm
 from gamehub.models import Game
 from gamehub.models import Comment
@@ -40,21 +40,36 @@ def show_comments(request, game_name_slug):
         context_dict['comments'] = None
     return render(request, 'gamehub/comment.html', context=context_dict)
 
-def rate(request):
+def rate(request, game_name_slug):
     #game = Game.objects.get(slug=game_name_slug)
+    try:
+        game = Game.objects.get(slug=game_name_slug)
+    except:
+        game = None
+
+    if game is None:
+        return redirect(reverse('gamehub:index'))
+
     form = CommentForm()
-    Comment
+
 
     if request.method == 'POST':
         form = CommentForm(request.POST)
 
         if form.is_valid():
-            form.save(commit=True)
-            return redirect_stderr(reverse('gamehub:index'))
+            if game:
+                comment = form.save(commit=False)
+                comment.game = game
+                comment.views = 0
+                comment.save()
+
+                return redirect(reverse('gamehub:show_comments', kwargs={'game_name_slug': game_name_slug}))
+
         else:
             print(form.errors)
     
-    return render(request, 'gamehub/rate.html', {'form': form})
+    context_dict = {'form': form, 'game': game}
+    return render(request, 'gamehub/rate.html',context=context_dict)
 
 
 

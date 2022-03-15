@@ -9,9 +9,8 @@ from gamehub.models import Comment
 class CommentForm(forms.ModelForm):
 
     
-    game = models.Game()
+    #game = models.Game()
     id = forms.IntegerField(widget=forms.NumberInput)
-    #date = forms.DateTimeField()
     content = forms.CharField(max_length=300)
     quality_rate = forms.IntegerField(widget=forms.NumberInput,max_value=5, initial=0)
     music_rate = forms.IntegerField(widget=forms.NumberInput,max_value=5, initial=0)
@@ -19,4 +18,5 @@ class CommentForm(forms.ModelForm):
 
     class Meta:
         model = Comment
-        fields = ('game','id','content','quality_rate','music_rate','community_rate',)
+        #exclude = ('game',)
+        fields = ('id','content','quality_rate','music_rate','community_rate',)
