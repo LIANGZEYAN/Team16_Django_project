@@ -10,5 +10,5 @@ path('about/', views.about, name='about'),
 path('comment/<slug:game_name_slug>/', views.show_comments, name='show_comments'),
 path('view/', views.view,name='id'),
 path('queryByGameName/', views.queryByGameName),
-
+path('sort/', views.sort, name='sort'),
 ]
