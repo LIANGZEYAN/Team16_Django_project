@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/static/style/sort.css" rel="stylesheet" type="text/css">
+        
+        <title>Sort</title>
+    </head>
+    <body>
+        <div class="head">
+            <div class="head-main">
+                <div class="logo">
+                    <div class="icon"><img src="/static/images/game-icon.png"></div>
+                    <div>GameHub</div>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="main-left">
+                <div>
+                    <button class="main-left-itema">Signed as {{ user.username }}</button>
+                </div>
+                <div>
+                    <button class="main-left-itemb">Log out</button>
+                </div>
+                <div>
+                    <p class="main-left-itemc">Sort games by features from best to worst</p>
+                </div>
+                <div class="main-left-window">
+                    <div>
+                        <p class="main-left-window-block" id="upBlock">
+                            {{ view.0.name}}({{view.0.poster}})<br>{{view.0.description}}
+                        </p>
+                        <div>
+                            <a href="/gamehub/comment/{{view.0.slug}}"  class="main-left-window-block-item">
+                                Detials
+                            </a>
+                        </div>
+                        <p class="main-left-window-block" id="downBlock">
+                            {{ view.1.name}}({{view.1.poster}})<br>{{view.1.description}}
+                        </p>
+                        <div >
+                            <a href="/gamehub/comment/{{view.1.slug}}"  class="main-left-window-block-item">
+                                Detials
+                            </a>
+                        </div>
+                    </div>
+                    <div class="main-left-window-buttom">
+                        <div>
+                            <bottom type="button" class="main-left-window-up" name="up" onclick="upPage('upBlock','downBlock')">...1</bottom>
+                        </div>
+                        <div>
+                            <bottom type="button" class="main-left-window-down" name="down" onclick="downPage('upBlock','downBlock')" >...1</bottom>
+                        </div>
+                    </div>
+                </div>
+                    
+            </div>
+            <div class="main-right">
+                <form class="main-right-searchb" method="post" action="{% url 'gamehub:index' %}">
+                    {% csrf_token %}
+                    <input type="text" size="50" name="query" id="query" placeholder="Search for the game..">
+                    <button class="main-right-searchs" type="submit" name="submit">Search</button>  
+                </form>
+                
+                <div>
+                <button type="button" name="search by Views" class="main-right-item" id="sbv" onclick="sortByView('upBlock','downBlock')">Search by Popularity</button>
+                </div>
+                <div>
+                <button type="button" name="search by Quality" class="main-right-item" id="sbq" onclick="sortByQuality('upBlock','downBlock')">Search by Quality</button>
+                </div>
+                <div>
+                <button type="button" name="search by Music" class="main-right-item" id="sbm" onclick="sortByMusic('upBlock','downBlock')">Search by Music</button>
+                </div>
+                <div>
+                <button type="button" name="search by Community" class="main-right-item" id="sbc" onclick="sortByCommunity('upBlock','downBlock')">Search by Community</button>
+            </div>
+            </div>
+            
+        </div>
+        <div class="foot">
+            <div>CONTACT US</div>
+            <img src="/static/images/icon-fb.png">
+            <img src="/static/images/icon-tw.png">
+            <img src="/static/images/icon-ins.png">
+        </div>
+        <script src="/static/js/sort.js"></script>
+    </body>
+</html>
