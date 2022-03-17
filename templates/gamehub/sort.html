@@ -29,32 +29,25 @@
                     <p class="main-left-itemc">Sort games by features from best to worst</p>
                 </div>
                 <div class="main-left-window">
+                    {%if view%}
+                    {%for game in view%}
                     <div>
-                        <p class="main-left-window-block" id="upBlock">
-                            {{ view.0.name}}({{view.0.poster}})<br>{{view.0.description}}
-                        </p>
-                        <div>
-                            <a href="/gamehub/comment/{{view.0.slug}}"  class="main-left-window-block-item">
-                                Detials
-                            </a>
+                        <div class="main-left-window-block">
+                            <p class="main-left-window-block-title">
+                                {{ game.name}}({{game.poster}})
+                            </p>
+                            <p class="main-left-window-block-descripe">
+                                <br>{{game.description}}
+                            </p>
                         </div>
-                        <p class="main-left-window-block" id="downBlock">
-                            {{ view.1.name}}({{view.1.poster}})<br>{{view.1.description}}
-                        </p>
-                        <div >
-                            <a href="/gamehub/comment/{{view.1.slug}}"  class="main-left-window-block-item">
+                        <div>
+                            <a href="/gamehub/comment/{{game.slug}}"  class="main-left-window-block-item">
                                 Detials
                             </a>
                         </div>
                     </div>
-                    <div class="main-left-window-buttom">
-                        <div>
-                            <bottom type="button" class="main-left-window-up" name="up" onclick="upPage('upBlock','downBlock')">...1</bottom>
-                        </div>
-                        <div>
-                            <bottom type="button" class="main-left-window-down" name="down" onclick="downPage('upBlock','downBlock')" >...1</bottom>
-                        </div>
-                    </div>
+                    {%endfor%}
+                    {%endif%}
                 </div>
                     
             </div>
@@ -86,6 +79,5 @@
             <img src="/static/images/icon-tw.png">
             <img src="/static/images/icon-ins.png">
         </div>
-        <script src="/static/js/sort.js"></script>
     </body>
 </html>
