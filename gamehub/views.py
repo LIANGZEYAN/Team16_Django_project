@@ -52,18 +52,26 @@ def queryByGameName(request):
     json_data2 = json.loads(json_data)
     return JsonResponse(json_data2,safe=False)
 
-def sort(request):
+def sortByView(request):
     context_dict = {}
-    list1=Game.objects.order_by('-views')[:]
-    list2=Game.objects.order_by('-avg_quality_rate')[:]
-    list3=Game.objects.order_by('-avg_music_rate')[:]
-    list4=Game.objects.order_by('-avg_community_rate')[:]
-    context_dict = {
-        'view': list1,
-        'qual':list2,
-        'musi':list3,
-        'comm':list4,
-    }
+    list=Game.objects.order_by('-views')[:]
+    context_dict = {'games': list,}
+    return render(request, 'gamehub/sort.html', context=context_dict)
 
+def sortByQual(request):
+    context_dict = {}
+    list=Game.objects.order_by('-avg_quality_rate')[:]
+    context_dict = {'games': list,}
+    return render(request, 'gamehub/sort.html', context=context_dict)
 
+def sortByMusic(request):
+    context_dict = {}
+    list=Game.objects.order_by('-avg_music_rate')[:]
+    context_dict = {'games': list,}
+    return render(request, 'gamehub/sort.html', context=context_dict)
+
+def sortByComm(request):
+    context_dict = {}
+    list=Game.objects.order_by('-avg_community_rate')[:]
+    context_dict = {'games': list,}
     return render(request, 'gamehub/sort.html', context=context_dict)

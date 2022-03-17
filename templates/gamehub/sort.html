@@ -28,9 +28,9 @@
                 <div>
                     <p class="main-left-itemc">Sort games by features from best to worst</p>
                 </div>
-                <div class="main-left-window">
-                    {%if view%}
-                    {%for game in view%}
+                <div class="main-left-window"> 
+                    {%if games%}
+                    {%for game in games%}
                     <div>
                         <div class="main-left-window-block">
                             <p class="main-left-window-block-title">
@@ -59,17 +59,25 @@
                 </form>
                 
                 <div>
-                <button type="button" name="search by Views" class="main-right-item" id="sbv" onclick="sortByView('upBlock','downBlock')">Search by Popularity</button>
+                    <a href="/gamehub/sort/">
+                        <button type="button" name="view" class="main-right-item" >Search by Popularity</button>
+                    </a>
                 </div>
                 <div>
-                <button type="button" name="search by Quality" class="main-right-item" id="sbq" onclick="sortByQuality('upBlock','downBlock')">Search by Quality</button>
+                    <a href="/gamehub/sort/quality">
+                        <button type="button" name="qual" class="main-right-item">Search by Quality</button>
+                    </a>
                 </div>
                 <div>
-                <button type="button" name="search by Music" class="main-right-item" id="sbm" onclick="sortByMusic('upBlock','downBlock')">Search by Music</button>
+                    <a href="/gamehub/sort/music">
+                        <button type="button" name="music" class="main-right-item">Search by Music</button>
+                    </a>
                 </div>
                 <div>
-                <button type="button" name="search by Community" class="main-right-item" id="sbc" onclick="sortByCommunity('upBlock','downBlock')">Search by Community</button>
-            </div>
+                    <a href="/gamehub/sort/community">
+                        <button type="button" name="comm" class="main-right-item">Search by Community</button>
+                    </a>
+                </div>
             </div>
             
         </div>
