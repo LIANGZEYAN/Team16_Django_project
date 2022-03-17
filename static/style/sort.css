@@ -1,0 +1,215 @@
+html {
+    background: url('/static/images/bg.jpg');
+    background-size: cover;
+}
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: visible;
+    margin: 0;
+    padding: 0;
+}
+.head {
+    margin: 0 auto;
+    padding: 0 20px;
+    color: #fff;
+    background: #2A2E32;
+}
+.head-main {
+    margin: 0 auto;
+    width: 1000px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo {
+    display: flex;
+    font-size: 24px;
+    align-items: center;
+    font-weight: 700;
+}
+.icon {
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: #fff;
+    overflow: hidden;
+}
+.icon > img {
+    width: 20px;
+    height: 20px;
+    background: url('/static/images/game-icon.png');
+    background-size: cover;
+}
+.main{
+    width: 1000px;
+    margin:auto;
+    display: flex;
+    justify-content: space-between;
+}
+.main-left {
+    width: 500px;
+    padding:0px;
+    
+}
+.main-right {
+    width: 400px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    
+}
+.main-left-itema{
+    width: 240px;
+    height: 35px;
+    font-size: 16px;
+    line-height: 35px;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+    background: #21BE70;
+    border: 0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    margin-top: 15px;
+}
+.main-left-itemb{
+    width: 120px;
+    height: 35px;
+    font-size: 16px;
+    line-height: 35px;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+    background: #074B34;
+    border: 0;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+.main-left-itemc{
+    width: 585px;
+    height: 35px;
+    font-size: 20px;
+    line-height: 35px;
+    text-align: center;
+    color: #fff;
+    background: #118a62;
+    border: 0;
+    border-radius: 5px;
+}
+.main-left-window{
+    width: 600px;
+    height: 500px;
+    color: #fff;
+    background: #118a62d3;
+    border: 0;
+    border-radius: 5px;
+    overflow:scroll; 
+    overflow-x:hidden;
+    margin-top: -16px;
+}
+.main-left-window-block{
+    width: 560px;
+    max-width: 560px;
+    max-height: 282px;  
+    color: #fff;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+.main-left-window-block-title{
+    font-size: 20px;
+    line-height: 10px;
+    text-align: center;
+}
+.main-left-window-block-descripe{
+    margin-top: -20px;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: left;
+    padding: auto;
+}
+.main-left-window-block-item{
+    width: 120px;
+    height: 35px;
+    font-size: 16px;
+    line-height: 0;
+    text-align: center;
+    cursor: pointer;
+    color: #c5eee0;
+    border: 1px;
+    border-radius: 5px;
+    padding: 0;
+    margin-left: 5px;
+}
+.main-right-searchb{
+    width: 300px;
+    height: 35px;
+    font-size: 16px;
+    line-height: 35px;
+    text-align: left;
+    cursor: text;
+    color: rgb(0, 0, 0);
+    border: 0;
+    border-radius: 5px;
+    
+    margin-bottom: 150px;
+}
+.main-right-searchs{
+    width: 120px;
+    height: 35px;
+    font-size: 16px;
+    line-height: 35px;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+    background: #074B34;
+    border: 0;
+    border-radius: 5px;
+    /* box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, .5); */ 
+}
+.main-right-item{
+    
+    margin-bottom: 20px;
+    width: 240px;
+    height: 35px;
+    font-size: 16px;
+    line-height: 35px;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+    background: #074B34;
+    border: 0;
+    border-radius: 5px;
+    margin-left: 150px;
+}
+.main-right-item:hover, .main-right-searchs:hover,.main-left-itema:hover,.main-left-itemb:hover{
+    padding-right: 25px;
+    opacity: 1;
+    transition: 0.5s;
+}
+.foot {
+    padding: 0 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+}
+.foot > img {
+    margin-left: 15px;
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+}

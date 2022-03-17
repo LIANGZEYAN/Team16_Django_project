@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/static/style/sort.css" rel="stylesheet" type="text/css">
+        
+        <title>Sort</title>
+    </head>
+    <body>
+        <div class="head">
+            <div class="head-main">
+                <div class="logo">
+                    <div class="icon"><img src="/static/images/game-icon.png"></div>
+                    <div>GameHub</div>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="main-left">
+                <div>
+                    <button class="main-left-itema">Signed as {{ user.username }}</button>
+                </div>
+                <div>
+                    <button class="main-left-itemb">Log out</button>
+                </div>
+                <div>
+                    <p class="main-left-itemc">Sort games by features from best to worst</p>
+                </div>
+                <div class="main-left-window"> 
+                    {%if games%}
+                    {%for game in games%}
+                    <div>
+                        <div class="main-left-window-block">
+                            <p class="main-left-window-block-title">
+                                {{ game.name}}({{game.poster}})
+                            </p>
+                            <p class="main-left-window-block-descripe">
+                                <br>{{game.description}}
+                            </p>
+                        </div>
+                        <div>
+                            <a href="/gamehub/comment/{{game.slug}}"  class="main-left-window-block-item">
+                                Detials
+                            </a>
+                        </div>
+                    </div>
+                    {%endfor%}
+                    {%endif%}
+                </div>
+                    
+            </div>
+            <div class="main-right">
+                <form class="main-right-searchb" method="post" action="{% url 'gamehub:index' %}">
+                    {% csrf_token %}
+                    <input type="text" size="50" name="query" id="query" placeholder="Search for the game..">
+                    <button class="main-right-searchs" type="submit" name="submit">Search</button>  
+                </form>
+                
+                <div>
+                    <a href="/gamehub/sort/">
+                        <button type="button" name="view" class="main-right-item" >Search by Popularity</button>
+                    </a>
+                </div>
+                <div>
+                    <a href="/gamehub/sort/quality">
+                        <button type="button" name="qual" class="main-right-item">Search by Quality</button>
+                    </a>
+                </div>
+                <div>
+                    <a href="/gamehub/sort/music">
+                        <button type="button" name="music" class="main-right-item">Search by Music</button>
+                    </a>
+                </div>
+                <div>
+                    <a href="/gamehub/sort/community">
+                        <button type="button" name="comm" class="main-right-item">Search by Community</button>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+        <div class="foot">
+            <div>CONTACT US</div>
+            <img src="/static/images/icon-fb.png">
+            <img src="/static/images/icon-tw.png">
+            <img src="/static/images/icon-ins.png">
+        </div>
+    </body>
+</html>
