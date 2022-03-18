@@ -98,7 +98,7 @@
                 {% for game in hits %}
                 <ul>
 
-                    <a href="/gamehub/comment/{{game.game__slug}}">{{game.game__name}}: {{game.num_of_comments}}
+                    <a href="/gamehub/view?id={{game.game__id}}">{{game.game__name}}: {{game.num_of_comments}}
                         comments</a>
 
                 </ul>
