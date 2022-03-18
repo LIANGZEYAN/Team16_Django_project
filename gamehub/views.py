@@ -24,8 +24,10 @@ def index(request):
     if request.method == 'POST':
         query = request.POST['query'].strip()
         if query:
-            # Run our Bing funciton to get the results list!
-            search_result = run_query(query)
+            # Run our Bing funciton to get the first 3 results!
+            temp = run_query(query)
+            for i in range(3):
+                search_result.append(temp[i])
 
 
     context_dict = {}

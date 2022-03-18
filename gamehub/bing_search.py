@@ -44,6 +44,7 @@ def main():
     results = run_query(input())
 
     for i in results:
+        print(i)
         print('title: %s\n' %i['title'])
         print('link: %s\n' %i['link'])
         print('summary: %s\n' %i['summary'])

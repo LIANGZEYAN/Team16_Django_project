@@ -34,7 +34,7 @@
                     {% for game in games %}
                     <ul>
 
-                        <a href="/gamehub/comment/{{game.slug}}">{{game.name}}</a><br>
+                        <a href="/gamehub/view?id={{game.id}}">{{game.name}}</a><br>
 
                     </ul>
                     {% endfor %}
@@ -56,12 +56,13 @@
 
                         <button class="buttons" type="submit" name="submit"><span>Search, or..</span></button>
 
-                        <button class="buttons" type="button">
+                        <button class="buttons" type="button" onclick="window.location.href='/gamehub/view?id=1'">
                             <span>Just roam in the gamehub, or..</span>
                         </button>
 
                         <button class="buttons" type="button">
-                            <a href=""></a><span>See games sorted by different criteria...</span>
+                            <a href="{% url 'gamehub:sortByView' %}"><span>See games sorted by different
+                                    criteria...</span></a>
                         </button>
                     </form>
                 </div>
@@ -107,14 +108,6 @@
             </div>
         </div>
     </div>
-
-
-
-    <!-- <div>
-        <a href="/gamehub/about/">About</a><br />
-        <img src="/static/images/elder_ring.jpg" alt="Picture of Game" /><br /> 
-        <img src="/media/elder_ring_character.jpg" alt="New character release" />
-    </div>-->
 
 
 </body>
