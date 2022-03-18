@@ -17,9 +17,16 @@
                 <h1>Gamehub<span> , where you have fun talking about games...</span></h1>
             </div>
 
+
             <div class="customer_buttons">
-                <button type="button"><span>Login</span></button>
-                <button type="button"><span>Sign Up</span></button>
+                {% if user.is_authenticated %}
+                    Welcome to Gamehub {{ user.username }}!
+                    <button class="button"><a href="{% url 'gamehub:logout' %}"><span>Log Out</span></a></button>
+                {% else %}
+                    Hi vistor!
+                    <button type="button"><a href="{% url 'gamehub:register' %}"><span>Sign Up</span></a></button>
+                    <button type="button"><a href="{% url 'gamehub:login' %}"><span>Log In</span></a></button>
+                {% endif %}
             </div>
         </div>
 

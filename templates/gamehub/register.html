@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+    <h1>Register for GameHub</h1>
+    {% if registered %}
+    Gamehub: <strong>thank you for registering!</strong>
+    <a href="{% url 'gamehub:index' %}">Return to the homepage.</a><br />
+    {% else %}
+    Gamehub: <strong>register here!</strong><br />
+    <form id="user_form" method="post" action="{% url 'gamehub:register' %}" enctype="multipart/form-data">
+
+        {% csrf_token %}
+
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+
+        <input type="submit" name="submit" value="Register" />
+    </form>
+    {% endif %}
+</body>
+</html>

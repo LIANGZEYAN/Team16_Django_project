@@ -1,12 +1,3 @@
-<!--
- * @Author: your name
- * @Date: 2022-03-07 11:32:31
- * @LastEditTime: 2022-03-07 16:12:20
- * @LastEditors: Please set LastEditors
- * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- * @FilePath: \game-page\index.html
--->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/static/js/jquery.searchableSelect.css" rel="stylesheet" type="text/css">
     <title>Game</title>
     <style>
         body,
@@ -246,22 +236,32 @@
     <div class="main">
         <div class="main-left">
             <div class="btn-list">
-                <button class="btn-item">Login in</button>
-                <button class="btn-item">Sign up</button>
-                <button class="btn-item">Search</button>
+                {% if user.is_authenticated %}
+                    Welcome to Gamehub {{ user.username }}!
+                    <button class="button"><a href="{% url 'gamehub:logout' %}"><span>Log Out</span></a></button>
+                {% else %}
+                    Hi vistor!
+                    <button type="button"><a href="{% url 'gamehub:register' %}"><span>Sign Up</span></a></button>
+                    <button type="button"><a href="{% url 'gamehub:login' %}"><span>Log In</span></a></button>
+                {% endif %}
+                <button type="button"><a href="{% url 'gamehub:index' %}"><span>Search</span></a></button>
             </div>
             <div class="game">
                 <div class="game-text">{{ context.name}}</div>
                 <div class="game-img"><img src="{{context.poster}}"></div>
                 <div class="game-btn">
                     <div class="game-item">
-                        <button class="game-btn-item" onclick="toByBotton()">Buy it right now!</button>
-                        <button class="game-btn-item">Leave comment</button>
+                        {% if user.is_authenticated %}
+                            <button class="game-btn-item" ><a href="{{ context.store_link }}"><span>But it now!</span></a></button>
+                            <button class="game-btn-item">Leave comment</button>
+                        {% else %}
+                            Hi vistor! Log in to buy and leave comment!
+                        {% endif %}
                     </div>
                     <div class="game-item">
                         <div class="price">
                             <span class="price-num">{{ context.price }}</span>
-                            <span class="price-icon"><img src="/static/images/icon-game.png" alt=""></span>
+                            <span class="price-icon"><img src="/static/images/pounds.png" alt=""></span>
                         </div>
                         <button class="game-btn-item"><a href="{% url 'gamehub:index' %}">back to main page</a></button>
                     </div>
@@ -321,7 +321,6 @@
         <img src="/static/images/icon-ins.png">
     </div>
     <script src="/static/js/jquery-1.11.1.min.js"></script>
-    <script src="/static/js/jquery.searchableSelect.js"></script>
     <script src="/static/js/view.js"></script>
 
 </body>

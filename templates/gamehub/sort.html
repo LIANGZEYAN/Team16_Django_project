@@ -26,7 +26,14 @@
                 <button class="main-left-itema">Signed as {{ user.username }}</button>
             </div>
             <div>
-                <button class="main-left-itemb">Log out</button>
+                {% if user.is_authenticated %}
+                    Welcome to Gamehub {{ user.username }}!
+                    <button class="main-left-itemb"><a href="{% url 'gamehub:logout' %}"><span>Log Out</span></a></button>
+                {% else %}
+                    Hi vistor!
+                    <button type="main-left-itemb"><a href="{% url 'gamehub:register' %}"><span>Sign Up</span></a></button>
+                    <button type="main-left-itemb"><a href="{% url 'gamehub:login' %}"><span>Log In</span></a></button>
+                {% endif %}
             </div>
             <div>
                 <p class="main-left-itemc">Sort games by features from best to worst</p>

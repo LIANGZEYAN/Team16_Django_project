@@ -14,4 +14,8 @@ path('sort/', views.sortByView, name='sortByView'),
 path('sort/quality', views.sortByQual, name='sortByQual'),
 path('sort/music', views.sortByMusic, name='sortByMusic'),
 path('sort/community', views.sortByComm, name='sortByComm'),
+path('register/', views.register, name='register'),
+path('login/', views.user_login, name='login'),
+path('restricted/', views.restricted, name='restricted'),
+path('logout/', views.user_logout, name='logout'),
 ]
