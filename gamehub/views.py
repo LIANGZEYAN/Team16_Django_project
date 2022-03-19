@@ -1,10 +1,15 @@
+#from audioop import reverse
+from contextlib import redirect_stderr
 import json
 
+from django.urls import reverse
 from django.core import serializers
 from django.forms import model_to_dict
 from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
+
 from gamehub.bing_search import run_query
+from django.shortcuts import render, redirect
+from gamehub.forms import CommentForm
 from gamehub.models import Game
 from gamehub.models import Comment
 from django.db.models import Count
@@ -67,6 +72,37 @@ def show_comments(request, game_name_slug):
         context_dict['game'] = None
         context_dict['comments'] = None
     return render(request, 'gamehub/comment.html', context=context_dict)
+
+def rate(request, game_name_slug):
+    #game = Game.objects.get(slug=game_name_slug)
+    try:
+        game = Game.objects.get(slug=game_name_slug)
+    except:
+        game = None
+
+    if game is None:
+        return redirect(reverse('gamehub:index'))
+
+    form = CommentForm()
+
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+
+        if form.is_valid():
+            if game:
+                comment = form.save(commit=False)
+                comment.game = game
+                comment.views = 0
+                comment.save()
+
+                return redirect(reverse('gamehub:show_comments', kwargs={'game_name_slug': game_name_slug}))
+
+        else:
+            print(form.errors)
+    
+    context_dict = {'form': form, 'game': game}
+    return render(request, 'gamehub/rate.html',context=context_dict)
 
 
 

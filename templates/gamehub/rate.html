@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rate</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/style/rate.css" rel="stylesheet" type="text/css">
+
+    <title>Sort</title>
+</head>
+
+<body>
+    <div>
+        <form id="rate" method="post" action="{% url 'gamehub:rate' game.slug %}">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="{{ form.id.id_for_label }}">ID：</label>
+                    {{ form.id }}
+                    {{ form.id.errors }}
+                </div>
+                <div class="col-md-4">
+                    <label for="{{ form.quality_rate.id_for_label }}">quality_rate: </label>
+                    {{ form.quality_rate }}
+                    {{ form.quality_rate.errors }}
+                </div>
+                <div class="col-md-4">
+                    <label for="{{ form.music_rate.id_for_label }}">music_rate: </label>
+                    {{ form.music_rate }}
+                    {{ form.music_rate.errors }}
+                </div>
+                <div class="col-md-4">
+                    <label for="{{ form.community_rate.id_for_label }}">community_rate: </label>
+                    {{ form.community_rate }}
+                    {{ form.community_rate.errors }}
+                </div>
+                <div class="col-md-12">
+                    <label for="{{ form.content.id_for_label }}">content: </label>
+                    {{ form.content }}
+                    {{ form.content.errors }}
+                </div>
+            </div>
+            <input type="submit" name="submit" value="Add Page" />
+        </form>
+
+
+
+    </div>
+    
+
+</body>
+</html>
