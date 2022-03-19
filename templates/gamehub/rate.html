@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Rate</title>
@@ -8,46 +10,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/static/style/rate.css" rel="stylesheet" type="text/css">
 
-    <title>Sort</title>
+   
 </head>
 
 <body>
-    <div>
+    <div class="head">
+        <div class="head-main">
+            <div class="logo">
+                <div class="icon"><img src="/static/images/game-icon.png"></div>
+                <div>GameHub</div>
+            </div>
+        </div>
+    </div>
+    <div class="main">
         <form id="rate" method="post" action="{% url 'gamehub:rate' game.slug %}">
             {% csrf_token %}
-            <div class="row">
-                <div class="col-md-4">
-                    <label for="{{ form.id.id_for_label }}">ID：</label>
-                    {{ form.id }}
-                    {{ form.id.errors }}
-                </div>
-                <div class="col-md-4">
-                    <label for="{{ form.quality_rate.id_for_label }}">quality_rate: </label>
-                    {{ form.quality_rate }}
-                    {{ form.quality_rate.errors }}
-                </div>
-                <div class="col-md-4">
-                    <label for="{{ form.music_rate.id_for_label }}">music_rate: </label>
-                    {{ form.music_rate }}
-                    {{ form.music_rate.errors }}
-                </div>
-                <div class="col-md-4">
-                    <label for="{{ form.community_rate.id_for_label }}">community_rate: </label>
-                    {{ form.community_rate }}
-                    {{ form.community_rate.errors }}
-                </div>
-                <div class="col-md-12">
-                    <label for="{{ form.content.id_for_label }}">content: </label>
-                    {{ form.content }}
-                    {{ form.content.errors }}
-                </div>
+        <div class="main-left">
+            <div>
+                <button class="main-left-itema">Signed as {{ user.username }}</button>
             </div>
-            <input type="submit" name="submit" value="Add Page" />
-        </form>
+            <div>
+                {% if user.is_authenticated %}
+                    Welcome to Gamehub {{ user.username }}!
+                    <button class="main-left-itemb"><a href="{% url 'gamehub:logout' %}"><span>Log Out</span></a></button>
+                {% else %}
+                    Hi vistor!
+                    <button type="main-left-itemb"><a href="{% url 'gamehub:register' %}"><span>Sign Up</span></a></button>
+                    <button type="main-left-itemb"><a href="{% url 'gamehub:login' %}"><span>Log In</span></a></button>
+                {% endif %}
+            </div>
+            <div>
+                <p class="main-left-itemd">You are leaving a review for: The game: {{game.name}}</p>
+            </div>
+            <div>
+                <p class="main-left-itemd">Rate the game out of 5 stars for each category</p>
+            </div>
+            <div class="comment">
+                <div class="game_to_rate">
+                    <div class="game-rate-left">
+                        <div><p class="game-name">Music</p></div>
+                    </div>
+                    <div class="game-rate-minddle">
+                        <div><p class="stars"><img src="/static/images/stars.png"></p></div>
+                    </div>
+                    <div class="game-rate-right">
+                        <div>
+                            <p class="rate-number">
+                            
+                        {{ form.music_rate }}
+                        {{ form.music_rate.errors }}
+                    </p></div>
+                        
+                    </div>
+                </div>
+                <div class="game_to_rate">
+                    <div class="game-rate-left">
+                        <div><p class="game-name">Community</p></div>
+                    </div>
+                    <div class="game-rate-minddle">
+                        <div><p class="stars"><img src="/static/images/stars.png"></p></div>
+                    </div>
+                    <div class="game-rate-right">
+                        <div>
+                            <p class="rate-number">
+                                {{ form.community_rate }}
+                                {{ form.community_rate.errors }}
+
+                        </p></div>
+                    </div>
+                </div>
+                <div class="game_to_rate">
+                    <div class="game-rate-left">
+                        <div><p class="game-name">Quality</p></div>
+                    </div>
+                    <div class="game-rate-minddle">
+                        <div><p class="stars"><img src="/static/images/stars.png"></p></div>
+                    </div>
+                    <div class="game-rate-right">
+                        <div>
+                            <p class="rate-number">
+                                {{ form.quality_rate }}
+                                {{ form.quality_rate.errors }}
+
+                        </p></div>
+                    </div>
+                </div>
+
+            </div>
+            
+
+        </div>
+        <div class="main-right">
+            <form class="main-right-searchb" method="post" action="{% url 'gamehub:index' %}">
+                {% csrf_token %}
+                <input type="text" size="50" name="query" id="query" placeholder="Search for the game..">
+                <button class="main-right-searchs" type="submit" name="submit">Search</button>
+            </form>
+            <br><br><br><br><br>
+            <div>
+                <p class="main-left-itemd">Any thing more to say?</p>
+            </div>
 
 
-
+            <div class="comment-txt">
+                <div>
+                    
+                {{ form.content }}
+                {{ form.content.errors }}
+            </div>
+            </div>
+            <div class="submit-area">
+                <input class="main-left-itemb" type="submit" name="submit" value="Add thoughts" />
+            </div>
+        </div>
+    </form>
     </div>
+    <div class="foot">
+        <div>CONTACT US</div>
+        <img src="/static/images/icon-fb.png">
+        <img src="/static/images/icon-tw.png">
+        <img src="/static/images/icon-ins.png">
+    </div>
+
+
+
+
     
 
 </body>
