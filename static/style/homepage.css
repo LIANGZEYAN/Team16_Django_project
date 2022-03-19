@@ -27,14 +27,14 @@ a:visited{
 
 .main_top {
     width: 100%;
-    height: 7%;
+    height: 10%;
     display: flex;  
 }
 .main_top span{
     font-size: small;
 }
 .game_hub{
-    flex:6;
+    flex:3.5;
 }
 .game_hub img{
     display: inline-block;
@@ -49,7 +49,7 @@ a:visited{
     flex:1;
 }
 .customer_buttons button{
-    margin-top: 15%;
+    margin-top: 10%;
     margin-left: 5px;
     border-radius: 4px;
     background-color: rgb(37, 37, 37);

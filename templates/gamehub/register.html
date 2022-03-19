@@ -1,25 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="/static/style/login_register.css">
 </head>
+
 <body>
-    <h1>Register for GameHub</h1>
-    {% if registered %}
-    Gamehub: <strong>thank you for registering!</strong>
-    <a href="{% url 'gamehub:index' %}">Return to the homepage.</a><br />
-    {% else %}
-    Gamehub: <strong>register here!</strong><br />
-    <form id="user_form" method="post" action="{% url 'gamehub:register' %}" enctype="multipart/form-data">
+    <div class="left"></div>
+    <div class="content">
+        <h1>Register for GameHub</h1>
 
-        {% csrf_token %}
+        {% if registered %}
+        <p>Gamehub: <strong>thank you for registering!</strong></p>
 
-        {{ user_form.as_p }}
-        {{ profile_form.as_p }}
+        <a href="{% url 'gamehub:index' %}">Return to the homepage.</a><br />
 
-        <input type="submit" name="submit" value="Register" />
-    </form>
-    {% endif %}
+        {% else %}
+        <form id="user_form" method="post" action="{% url 'gamehub:register' %}" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+
+            <input type="submit" name="submit" value="Register" />
+        </form>
+        {% endif %}
+    </div>
+    <div class="right"></div>
 </body>
+
 </html>

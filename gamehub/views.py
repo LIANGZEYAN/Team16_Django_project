@@ -27,7 +27,7 @@ def index(request):
     # Note the key boldmessage matches to {{ boldmessage }} in the template!
     game_list1 = Game.objects.order_by('-views')[:3]
     # comments list
-    form_of_comments = Comment.objects.values('game__name', 'game__slug', 'game__id').annotate(num_of_comments = Count('game')).order_by()
+    form_of_comments = Comment.objects.values('game__name', 'game__slug', 'game__id').annotate(num_of_comments = Count('game')).order_by('-num_of_comments')
     
     result = []
     for i in form_of_comments:  

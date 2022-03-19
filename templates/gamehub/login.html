@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <title>login</title>
+    <link rel="stylesheet" type="text/css" href="/static/style/login_register.css">
 
-    <h1>Login to Gamehub</h1>
-    <form id="login_form" method="post" action="{% url 'gamehub:login' %}">
-        {% csrf_token %}
-        Username: <input type="text" name="username" value="" size="50" />
-        <br />
-        Password: <input type="password" name="password" value="" size="50" />
-        <br />
-        <input type="submit" value="submit" />
-    </form>
+</head>
+
+<body>
+    <div class="left"></div>
+    <div class="content">
+        <h1>Login to Gamehub</h1>
+        <form id="login_form" method="post" action="{% url 'gamehub:login' %}">
+            {% csrf_token %}
+            Username: <input type="text" name="username" value="" size="50" />
+            <br />
+            Password: <input type="password" name="password" value="" size="50" />
+            <br />
+            <input type="submit" value="login" />
+        </form>
+    </div>
+    <div class="right"></div>
 
 </body>
+
 </html>

@@ -20,12 +20,12 @@
 
             <div class="customer_buttons">
                 {% if user.is_authenticated %}
-                    Welcome to Gamehub {{ user.username }}!
-                    <button class="button"><a href="{% url 'gamehub:logout' %}"><span>Log Out</span></a></button>
+                Welcome to Gamehub, <strong>{{ user.username }}</strong>!
+                <button class="button"><a href="{% url 'gamehub:logout' %}"><span>Log Out</span></a></button>
                 {% else %}
-                    Hi vistor!
-                    <button type="button"><a href="{% url 'gamehub:register' %}"><span>Sign Up</span></a></button>
-                    <button type="button"><a href="{% url 'gamehub:login' %}"><span>Log In</span></a></button>
+                Hi vistor!
+                <button type="button"><a href="{% url 'gamehub:register' %}"><span>Sign Up</span></a></button>
+                <button type="button"><a href="{% url 'gamehub:login' %}"><span>Log In</span></a></button>
                 {% endif %}
             </div>
         </div>
@@ -35,7 +35,7 @@
 
 
             <div class="content-left">
-                <h2>Most viewed games</h2>
+                <h2>Most viewed games: Top 3</h2>
                 <div>
                     {% if games %}
                     {% for game in games %}
@@ -64,7 +64,7 @@
                         <button class="buttons" type="submit" name="submit"><span>Search, or..</span></button>
 
                         <button class="buttons" type="button" onclick="window.location.href='/gamehub/view?id=1'">
-                            <span>Just roam in the gamehub, or..</span>
+                            <span>Just roam in the Gamehub, or..</span>
                         </button>
 
                         <button class="buttons" type="button">

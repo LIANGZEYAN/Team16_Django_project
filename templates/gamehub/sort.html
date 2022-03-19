@@ -15,28 +15,27 @@
     <div class="head">
         <div class="head-main">
             <div class="logo">
-                <div class="icon"><img src="/static/images/game-icon.png"></div>
+                <div class="icon"><a href="{% url 'gamehub:index' %}"><img
+                            src="{% static 'images/game-icon.png' %}"></a></div>
                 <div>GameHub</div>
             </div>
         </div>
     </div>
     <div class="main">
         <div class="main-left">
-            <div>
-                <button class="main-left-itema">Signed as {{ user.username }}</button>
-            </div>
-            <div>
+            <div class="buttons">
                 {% if user.is_authenticated %}
-                    Welcome to Gamehub {{ user.username }}!
-                    <button class="main-left-itemb"><a href="{% url 'gamehub:logout' %}"><span>Log Out</span></a></button>
+                <button class="main-left-itema">Welcome to Gamehub, <strong>{{ user.username }}!</strong></button>
+                Welcome to Gamehub <strong>{{ user.username }}</strong>!
+                <button class="main-left-itemb"><a href="{% url 'gamehub:logout' %}"><span>Log Out</span></a></button>
                 {% else %}
-                    Hi vistor!
-                    <button type="main-left-itemb"><a href="{% url 'gamehub:register' %}"><span>Sign Up</span></a></button>
-                    <button type="main-left-itemb"><a href="{% url 'gamehub:login' %}"><span>Log In</span></a></button>
+                <p class="welcome-visitor">Hi vistor!</p>
+                <button class="main-left-itemb"><a href="{% url 'gamehub:register' %}"><span>Sign Up</span></a></button>
+                <button class="main-left-itemb"><a href="{% url 'gamehub:login' %}"><span>Log In</span></a></button>
                 {% endif %}
             </div>
             <div>
-                <p class="main-left-itemc">Sort games by features from best to worst</p>
+                <p class="main-left-itemc">Sort games by features in descending order</p>
             </div>
             <div class="main-left-window">
                 {%if games%}
@@ -44,18 +43,14 @@
                 <div>
                     <div class="main-left-window-block">
                         <p class="main-left-window-block-title">
-                            {{ game.name}} <br><br>
-                            <img src={{game.poster}}> <br>
+                            <strong>{{ game.name}}</strong> <br><br>
+                            <a href="/gamehub/view?id={{game.id}}" class="main-left-window-block-item">
+                                <img src={{game.poster}}> <br>
+                            </a>
                         </p>
                         <p class="main-left-window-block-descripe">
                             <br>{{game.description}} <br>
                         </p>
-                    </div>
-                    <div>
-                        <br><br><br><br>
-                        <a href="/gamehub/view?id={{game.id}}" class="main-left-window-block-item">
-                            Details
-                        </a>
                     </div>
                 </div>
                 {%endfor%}
@@ -72,22 +67,22 @@
 
             <div>
                 <a href="/gamehub/sort/">
-                    <button type="button" name="view" class="main-right-item">Search by Popularity</button>
+                    <button type="button" name="view" class="main-right-item">Sort by Popularity</button>
                 </a>
             </div>
             <div>
                 <a href="/gamehub/sort/quality">
-                    <button type="button" name="qual" class="main-right-item">Search by Quality</button>
+                    <button type="button" name="qual" class="main-right-item">Sort by Quality</button>
                 </a>
             </div>
             <div>
                 <a href="/gamehub/sort/music">
-                    <button type="button" name="music" class="main-right-item">Search by Music</button>
+                    <button type="button" name="music" class="main-right-item">Sort by Music</button>
                 </a>
             </div>
             <div>
                 <a href="/gamehub/sort/community">
-                    <button type="button" name="comm" class="main-right-item">Search by Community</button>
+                    <button type="button" name="comm" class="main-right-item">Sort by Community</button>
                 </a>
             </div>
         </div>
