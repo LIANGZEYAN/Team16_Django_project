@@ -61,7 +61,11 @@ def about(request):
     context_dict = {'boldmessage': 'Team16'}
     return render(request, 'gamehub/about.html', context=context_dict)
 
+def thanks(request):
+    return render(request, 'gamehub/thanks.html')
+
 def show_comments(request, game_name_slug):
+
     context_dict = {}
     try:
         game = Game.objects.get(slug=game_name_slug)
@@ -71,7 +75,7 @@ def show_comments(request, game_name_slug):
     except Game.DoesNotExist:
         context_dict['game'] = None
         context_dict['comments'] = None
-    return render(request, 'gamehub/comment.html', context=context_dict)
+    return render(request, 'gamehub/thanks.html', context=context_dict)
 
 def rate(request, game_name_slug):
     #game = Game.objects.get(slug=game_name_slug)
@@ -103,9 +107,6 @@ def rate(request, game_name_slug):
     
     context_dict = {'form': form, 'game': game}
     return render(request, 'gamehub/rate.html',context=context_dict)
-
-
-
 
 def view(request):
     obj = model_to_dict(Game.objects.get(id=request.GET.get("id")))

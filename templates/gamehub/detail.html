@@ -57,7 +57,7 @@
                             {% if user.is_authenticated %}
                             <button class="game-btn-item"><a href="{{ context.store_link }}"><span>But it
                                         now!</span></a></button>
-                            <button class="game-btn-item">Leave a comment</button>
+                            <button class="game-btn-item"><a href="/gamehub/comment/{{ context.name }}/rate/"><span>Leave a comment</span></a></button>
                             {% else %}
                             <p>Hi vistor! Log in to buy and leave a comment!</p>
                             {% endif %}
@@ -69,8 +69,7 @@
             <div class="main-right">
                 <div class="rating">
                     <div class="rating-item">
-                        <div class="rating-name"><strong>Quality</strong><span id="qualityNum" style="display: none">{{
-                                context.avg_quality_rate }}</span></div>
+                        <div class="rating-name"><strong>Quality</strong><span id="qualityNum" style="display: none">{{ context.avg_quality_rate }}</span></div>
                         <div class="rating-start" id="quality">
                             <span>{{ context.avg_quality_rate }}</span>
                             <img src="/static/images/stars.png">

@@ -27,7 +27,7 @@
             {% csrf_token %}
             <div class="main-left">
 
-                <button class="main-left-itema">Welcome to GameHub, <strong>{{ user.username }}</strong>!</button>
+                <button class="main-left-itema">Sign as <strong>{{ user.username }}</strong></button>
 
                 <div>
                     {% if user.is_authenticated %}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <link rel="stylesheet" type="text/css" href="/static/style/thanks.css">
+</head>
+
+<body>
+    <div class="main">
+        <div class="main_top">
+            <div class="game_hub">
+                <img src="/static/images/game-icon.png">
+                <h1>Gamehub<span> , where you have fun talking about games...</span></h1>
+            </div>
+
+            <div class="customer_buttons">
+                Thank you for your contribution to the gamehub gaming community, <strong>{{ user.username }}</strong>!
+                <button class="button"><a href="{% url 'gamehub:index' %}"><span>Back to main page</span></a></button>
+            </div>
+
+        </div>
+        <div class="content">
+            <div class="content-middle">
+                <div class="form-inline">
+                    <h2>Your review is important to the community and every player in the community, You can return to the community to continue browsing.</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
