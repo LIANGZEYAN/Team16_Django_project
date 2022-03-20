@@ -83,12 +83,11 @@ a:visited{
     display: flex;
 }
 .main-left-itema{
-    width: 240px;
+    width: 360px;
     height: 35px;
     font-size: 16px;
     line-height: 35px;
     text-align: center;
-    cursor: pointer;
     color: gold;
     background: #252525;
     border: 0;
@@ -209,7 +208,7 @@ a:visited{
     border-radius: 5px;
     margin-left: auto;
 }
-.main-right-item:hover, .main-right-searchs:hover,.main-left-itema:hover,.main-left-itemb:hover{
+.main-right-item:hover, .main-right-searchs:hover,.main-left-itemb:hover{
     padding-right: 25px;
     opacity: 1;
     transition: 0.5s;
