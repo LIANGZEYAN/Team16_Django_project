@@ -26,7 +26,6 @@
             <div class="buttons">
                 {% if user.is_authenticated %}
                 <button class="main-left-itema">Welcome to Gamehub, <strong>{{ user.username }}!</strong></button>
-                Welcome to Gamehub <strong>{{ user.username }}</strong>!
                 <button class="main-left-itemb"><a href="{% url 'gamehub:logout' %}"><span>Log Out</span></a></button>
                 {% else %}
                 <p class="welcome-visitor">Hi vistor!</p>
